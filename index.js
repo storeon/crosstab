@@ -18,9 +18,11 @@ var crossTab = function (config) {
     })
 
     if (!resetInit) {
-      store.on('@init', function () {
-        return parse(localStorage[key])
-      })
+      try {
+        store.on('@init', function () {
+          return parse(localStorage.getItem(key))
+        })
+      } catch (e) {}
     }
 
     store.on('@changed', function (state) {
