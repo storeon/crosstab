@@ -1,34 +1,38 @@
+var parse = JSON.parse
+
 /**
- * Storeon module to update state at different browser tabs
+ * Storeon module to sync state at different tabs of the browser
  * @param {Object} config The config object
  * @param {String} [config.key = 'storeon-crosstab'] The default key
- * @param {Boolean} [config.skipInit = true] Skip init event
- * @return {Function} Storeon callback module
+ * @param {Boolean} [config.resetInit = false] Reset state at reloading tab
  */
 var crossTab = function (config) {
   config = config || {}
 
   var key = config.key || 'storeon-crosstab'
-  var skipInit = config.skipInit || true
+  var resetInit = config.resetInit || false
 
   return function (store) {
     store.on('crosstab', function (_, state) {
       return state
     })
 
-    store.on('@changed', function (state) {
-      if (skipInit) {
-        skipInit = false
-        return
-      }
+    if (!resetInit) {
+      store.on('@init', function () {
+        return parse(localStorage[key])
+      })
+    }
 
+    store.on('@changed', function (state) {
       try {
-        localStorage.setItem(key, JSON.stringify(state))
+        localStorage[key] = JSON.stringify(state)
       } catch (e) {}
     })
 
-    window.addEventListener('storage', function (event) {
-      store.dispatch('crosstab', JSON.parse(event.newValue))
+    window.addEventListener('storage', function (e) {
+      if (e.key === key) {
+        store.dispatch('crosstab', parse(e.newValue))
+      }
     })
   }
 }

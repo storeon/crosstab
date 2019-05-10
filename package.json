@@ -1,7 +1,7 @@
 {
   "name": "cross-tab",
-  "version": "0.1.0",
-  "description": "Module for storeon to update data at different browser tabs",
+  "version": "0.2.0",
+  "description": "Module for storeon to sync state at different tabs of the browser",
   "main": "index.js",
   "author": "Ivan Solovev <ivan@solovev.one>",
   "license": "MIT",
@@ -37,7 +37,7 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "165 B"
+      "limit": "178 B"
     }
   ],
   "lint-staged": {
