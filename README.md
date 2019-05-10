@@ -5,7 +5,6 @@
      
 The 165 bytes module for [Storeon](https://github.com/storeon/storeon) to sync state at different tabs of the browser. It syncs state on every change. It uses [Size Limit](https://github.com/ai/size-limit) to control the size.
 
-
 ## Installation
 
 ```
@@ -56,6 +55,10 @@ render(
       alt="Sponsored by Evrone" width="250">
   </a>
 </p>
+
+
+## Example
+![Example](example.gif)
 
 
 ### crossTab(config)
