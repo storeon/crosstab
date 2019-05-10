@@ -50,6 +50,13 @@ render(
 )
 ```
 
+<p>
+  <a href="https://evrone.com/?utm_source=storeon-cross-tab">
+    <img src="https://solovev.one/static/evrone-sponsored-300.png" 
+      alt="Sponsored by Evrone" width="250">
+  </a>
+</p>
+
 
 ### crossTab(config)
 
