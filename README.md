@@ -5,6 +5,7 @@
      
 The 165 bytes module for [Storeon](https://github.com/storeon/storeon) to sync state at different tabs of the browser. It syncs state on every change. It uses [Size Limit](https://github.com/ai/size-limit) to control the size.
 
+
 ## Installation
 
 ```
@@ -12,6 +13,7 @@ npm install isolovev/cross-tab
 # or 
 yarn add isolovev/cross-tab
 ```
+
 
 ## Usage
 
@@ -49,6 +51,9 @@ render(
 )
 ```
 
+
+## Sponsor
+
 <p>
   <a href="https://evrone.com/?utm_source=storeon-cross-tab">
     <img src="https://solovev.one/static/evrone-sponsored-300.png" 
@@ -74,8 +79,6 @@ typeof config.resetInit === 'boolean'
 ```
 
 Default value of `config.resetInit` is `false`. This key is used to reset the state at page by overload.
-
-## Sponsor
 
 
 ## LICENSE
