@@ -16,8 +16,11 @@ var crossTab = function (config) {
       return state
     })
 
-    store.on('@changed', function (state, event) {
-      if (skipInit) return skipInit = false
+    store.on('@changed', function (state) {
+      if (skipInit) {
+        skipInit = false
+        return
+      }
 
       try {
         localStorage.setItem(key, JSON.stringify(state))
