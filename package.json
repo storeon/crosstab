@@ -54,7 +54,8 @@
     "ignoreCapitalization": true,
     "dictionary": [
       "storeon",
-      "versioning"
+      "versioning",
+      "cross-tab"
     ]
   }
 }
