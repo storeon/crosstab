@@ -11,3 +11,6 @@ example.gif
 example/
 dist/
 .travis.yml
+
+test/
+coverage/

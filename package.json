@@ -10,7 +10,7 @@
     "lint": "eslint *.js",
     "spell": "yarn docs && yaspeller *.md",
     "docs": "documentation build *.js -f md -o api.md",
-    "test": "yarn lint && size-limit && yarn spell",
+    "test": "jest --coverage && yarn lint && size-limit && yarn spell",
     "build:example": "parcel build example/index.html --no-cache --no-source-maps --public-url ."
   },
   "devDependencies": {
@@ -31,6 +31,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^2.2.0",
+    "jest": "^24.8.0",
     "lint-staged": "^8.1.6",
     "parcel-bundler": "^1.12.3",
     "rimraf": "^2.6.3",

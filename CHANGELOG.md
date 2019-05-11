@@ -3,6 +3,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 0.3.1
 * Fix a one-time dispatched of an events.
+* Add test.
 
 ## 0.3.0
 * Add option for filter of callback.
