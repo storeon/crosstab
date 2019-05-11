@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    height: 100vh;
+}
+
+.grid {
+    width: 430px;
+    box-sizing: border-box;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+}
+
+.counter {
+    font-size: 40px;
+    font-weight: 500;
+    margin: 0 0 0.25em;
+}
+
+.button {
+    padding: 10px 15px;
+    font-size: 14px;
+}

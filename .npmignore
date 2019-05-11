@@ -7,3 +7,7 @@ yarn.lock
 
 api.md
 example.gif
+
+example/
+dist/
+.travis.yml
