@@ -30,6 +30,7 @@ If you want sync state between tabs of the browser you should import the `crossT
 
 ```js
 import createStore from 'storeon'
+import persistState from 'storeon/localstorage'
 import crossTab from 'cross-tab'
 
 const increment = store => {
@@ -38,16 +39,34 @@ const increment = store => {
   store.on('toggleMenu', ({ openMenu }) => ({ openMenu: !openMenu }))
 }
 
-const sync = crossTab({
-  filter: (event, data) => event !== 'toggleMenu'
-})
-
-const store = createStore([increment, sync])
+const store = createStore([
+  increment,
+  persistState(),
+  crossTab({ filter: (event, data) => event !== 'toggleMenu' })
+])
 
 store.on('@changed', (store) => {
   document.querySelector('.counter').innerText = store.count
 })
 ```
+
+
+## API
+
+```js
+import createStore from 'storeon'
+import crossTab from 'cross-tab'
+
+const moduleCrossTab = crossTab({
+  filter: (event, data) => event !== 'dec',
+  key: 'storeon-crosstab'
+})
+```
+
+Function `crossTab` could have options:
+
+* __key__: key for sync data in local storage.
+* __filter__: callback function to filter actions to be synchronized. Should return `true` if need sync this action. Takes parameters of an event name and a data that is sent.
 
 
 ## Sponsor
@@ -58,28 +77,6 @@ store.on('@changed', (store) => {
       alt="Sponsored by Evrone" width="250">
   </a>
 </p>
-
-## API
-### crossTab(config)
-
-```js
-const config = {
-  key: 'storeon-crosstab',
-  filter: (event, data) => event !== 'dec'
-}
-```
-
-```js
-typeof config.key === 'string'
-```
-
-Default value of `config.key` is `storeon-crosstab`. This key is using to sync data in local storage.
-
-```js
-typeof config.filter === 'function'
-```
-
-Callback function to filter actions to be synchronized. Should return `true` if need sync this action. Takes parameters of an event name and a data that is sent.
 
 
 ## LICENSE

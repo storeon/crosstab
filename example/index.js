@@ -1,4 +1,5 @@
 var createStore = require('storeon')
+var persistState = require('@storeon/localstorage')
 
 var crossTab = require('../')
 
@@ -26,11 +27,12 @@ function filter (event) {
   return event !== 'ten'
 }
 
-// Initialization crossTab
-var syncTab = crossTab({ filter: filter })
-
 // Create store
-var store = createStore([increment, syncTab])
+var store = createStore([
+  increment,
+  persistState(),
+  crossTab({ filter: filter })
+])
 
 var counter = document.querySelector('.counter')
 counter.innerText = store.get().count

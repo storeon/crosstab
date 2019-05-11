@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^28.2.1",
+    "@storeon/localstorage": "storeon/localstorage",
     "autoprefixer": "^9.5.1",
     "clean-publish": "^1.1.2",
     "documentation": "^11.0.0",

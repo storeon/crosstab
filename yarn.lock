@@ -1156,6 +1156,10 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@storeon/localstorage@storeon/localstorage":
+  version "0.4.0"
+  resolved "https://codeload.github.com/storeon/localstorage/tar.gz/3e58300a2045107ea45137daa8c9ff39a00f1021"
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
