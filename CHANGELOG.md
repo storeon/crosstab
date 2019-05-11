@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.3.0
+* Add option for filter of callback
+
 ## 0.2.2
 * Fix safari bug
 

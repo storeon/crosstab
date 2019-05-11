@@ -1,9 +1,0 @@
-{
-  "extends": "@logux/eslint-config/browser",
-  "rules": {
-    "node/no-unpublished-require": "off",
-    "es5/no-es6-static-methods": "off",
-    "node/no-missing-require": "off",
-    "func-style": "off"
-  }
-}
