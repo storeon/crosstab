@@ -1,4 +1,4 @@
-var parse = JSON.parse
+var eSync = '@sync'
 
 /**
  * Storeon module to sync state at different tabs of the browser
@@ -14,27 +14,22 @@ var crossTab = function (config) {
   return function (store) {
     store.on('@dispatch', function (_, e) {
       if (e[0][0] === '@') {
-        if (e[0] === '@sync') sync = true
-        if (e[0] === '@changed') sync = false
+        sync = e[0] === eSync
         return
       }
 
       if (sync) return
 
       try {
-        localStorage[key] = JSON.stringify({
-          name: e[0],
-          data: e[1],
-          time: +new Date()
-        })
+        localStorage[key] = JSON.stringify([e[0], e[1], +new Date()])
       } catch (er) {}
     })
 
     window.addEventListener('storage', function (e) {
       if (e.key === key) {
-        var tip = parse(e.newValue)
-        store.dispatch('@sync')
-        store.dispatch(tip.name, tip.data)
+        var tip = JSON.parse(e.newValue)
+        store.dispatch(eSync)
+        store.dispatch(tip[0], tip[1])
       }
     })
   }
