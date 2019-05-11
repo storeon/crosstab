@@ -3,7 +3,9 @@
 
 # storeon-cross-tab
      
-Module for [Storeon] to synchronize actions for browser tabs with filtering of events that need to be synchronized. It size is 205 bytes (minified and gzipped) and uses [Size Limit] to control size.
+Module for [Storeon] to synchronize actions for browser tabs with filtering of events that need to be synchronized. 
+
+It size is 205 bytes (minified and gzipped) and uses [Size Limit] to control size.
 
 [Storeon]: https://github.com/storeon/storeon
 [Size Limit]: https://github.com/ai/size-limit
@@ -31,11 +33,16 @@ import createStore from 'storeon'
 import crossTab from 'cross-tab'
 
 const increment = store => {
-  store.on('@init', () => ({ count: 0 }))
+  store.on('@init', () => ({ count: 0, openMenu: false }))
   store.on('inc', ({ count }) => ({ count: count + 1 }))
+  store.on('toggleMenu', ({ openMenu }) => ({ openMenu: !openMenu }))
 }
 
-const store = createStore([increment, crossTab()])
+const sync = crossTab({
+  filter: (event, data) => event !== 'toggleMenu'
+})
+
+const store = createStore([increment, sync])
 
 store.on('@changed', (store) => {
   document.querySelector('.counter').innerText = store.count
