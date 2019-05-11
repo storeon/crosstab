@@ -1,7 +1,7 @@
-<img src="https://storeon.github.io/storeon/logo.svg" align="right"
-     alt="Storeon logo by Anton Lovchikov" width="160" height="142">
-
 # storeon-cross-tab
+
+<img src="https://storeon.github.io/storeon/logo.svg" align="right"
+     alt="Storeon logo by Anton Lovchikov" width="140">
      
 Module for [Storeon] to synchronize actions for browser tabs with filtering of events that need to be synchronized. 
 
@@ -9,6 +9,9 @@ It size is 218 bytes (minified and gzipped) and uses [Size Limit] to control siz
 
 [Storeon]: https://github.com/storeon/storeon
 [Size Limit]: https://github.com/ai/size-limit
+
+[![Build Status](https://travis-ci.org/isolovev/cross-tab.svg?branch=master)](https://travis-ci.org/isolovev/cross-tab)
+[![codecov](https://codecov.io/gh/isolovev/cross-tab/branch/master/graph/badge.svg)](https://codecov.io/gh/isolovev/cross-tab)
 
 
 ## Example
@@ -74,7 +77,7 @@ Function `crossTab` could have options:
 <p>
   <a href="https://evrone.com/?utm_source=storeon-cross-tab">
     <img src="https://solovev.one/static/evrone-sponsored-300.png" 
-      alt="Sponsored by Evrone" width="250">
+      alt="Sponsored by Evrone" width="210">
   </a>
 </p>
 
