@@ -1,5 +1,3 @@
-var eSync = '@sync'
-
 /**
  * Storeon module to sync state at different tabs of the browser
  * @param {Object} config The config object
@@ -9,27 +7,32 @@ var crossTab = function (config) {
   config = config || {}
 
   var key = config.key || 'storeon-crosstab'
-  var sync = false
+  var ignoreNext = false
+  var ignoreDate = 0
 
   return function (store) {
-    store.on('@dispatch', function (_, e) {
-      if (e[0][0] === '@') {
-        sync = e[0] === eSync
+    store.on('@dispatch', function (_, event) {
+      if (event[0][0] === '@') return
+
+      if (ignoreNext) {
+        ignoreNext = false
         return
       }
 
-      if (sync) return
-
       try {
-        localStorage[key] = JSON.stringify([e[0], e[1], +new Date()])
-      } catch (er) {}
+        ignoreDate = +new Date()
+        localStorage[key] = JSON.stringify([event[0], event[1], ignoreDate])
+      } catch (e) {}
     })
 
-    window.addEventListener('storage', function (e) {
-      if (e.key === key) {
-        var tip = JSON.parse(e.newValue)
-        store.dispatch(eSync)
-        store.dispatch(tip[0], tip[1])
+    window.addEventListener('storage', function (event) {
+      if (event.key === key) {
+        var tip = JSON.parse(event.newValue)
+
+        if (ignoreDate !== tip[2]) {
+          ignoreNext = true
+          store.dispatch(tip[0], tip[1])
+        }
       }
     })
   }
