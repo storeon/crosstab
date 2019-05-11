@@ -11,7 +11,7 @@
     "spell": "yarn docs && yaspeller *.md",
     "docs": "documentation build *.js -f md -o api.md",
     "test": "yarn lint && size-limit && yarn spell",
-    "build:example": "parcel build example/index.html --no-cache --no-source-maps"
+    "build:example": "parcel build example/index.html --no-cache --no-source-maps --public-url ."
   },
   "devDependencies": {
     "@logux/eslint-config": "^28.2.1",
