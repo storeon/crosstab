@@ -55,7 +55,8 @@
     "dictionary": [
       "storeon",
       "versioning",
-      "cross-tab"
+      "cross-tab",
+      "gzipped"
     ]
   }
 }

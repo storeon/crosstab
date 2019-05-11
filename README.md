@@ -1,9 +1,16 @@
-# storeon-cross-tab
-
 <img src="https://storeon.github.io/storeon/logo.svg" align="right"
      alt="Storeon logo by Anton Lovchikov" width="160" height="142">
+
+# storeon-cross-tab
      
-The 189 bytes module for [Storeon](https://github.com/storeon/storeon) to sync state at different tabs of the browser. It syncs state on every change. It uses [Size Limit](https://github.com/ai/size-limit) to control the size.
+Module for [Storeon] to synchronize actions for browser tabs with filtering of events that need to be synchronized. It size is 205 bytes (minified and gzipped) and uses [Size Limit] to control size.
+
+[Storeon]: https://github.com/storeon/storeon
+[Size Limit]: https://github.com/ai/size-limit
+
+
+## Example
+![Example](example.gif)
 
 
 ## Installation
@@ -23,32 +30,16 @@ If you want sync state between tabs of the browser you should import the `crossT
 import createStore from 'storeon'
 import crossTab from 'cross-tab'
 
-let increment = store => {
+const increment = store => {
   store.on('@init', () => ({ count: 0 }))
   store.on('inc', ({ count }) => ({ count: count + 1 }))
 }
 
-export const store = createStore([increment, crossTab()])
-```
+const store = createStore([increment, crossTab()])
 
-```js
-import useStoreon from 'storeon/react' // or storeon/preact
-
-export default const Counter = () => {
-  const { dispatch, count } = useStoreon('count')
-  return <button onClick={() => dispatch('inc')}>{count}</button>
-}
-```
-
-```js
-import StoreContext from 'storeon/react/context'
-
-render(
-  <StoreContext.Provider value={store}>
-    <Counter />
-  </StoreContext.Provider>,
-  document.querySelector('#app')
-)
+store.on('@changed', (store) => {
+  document.querySelector('.counter').innerText = store.count
+})
 ```
 
 
@@ -61,12 +52,15 @@ render(
   </a>
 </p>
 
-
-## Example
-![Example](example.gif)
-
-
+## API
 ### crossTab(config)
+
+```js
+const config = {
+  key: 'storeon-crosstab',
+  filter: (event, data) => event !== 'dec'
+}
+```
 
 ```js
 typeof config.key === 'string'
@@ -75,10 +69,10 @@ typeof config.key === 'string'
 Default value of `config.key` is `storeon-crosstab`. This key is using to sync data in local storage.
 
 ```js
-typeof config.resetInit === 'boolean'
+typeof config.filter === 'function'
 ```
 
-Default value of `config.resetInit` is `false`. This key is used to reset the state at page by overload.
+Callback function to filter actions to be synchronized. Should return `true` if need sync this action. Takes parameters of an event name and a data that is sent.
 
 
 ## LICENSE
