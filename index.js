@@ -11,6 +11,7 @@ var crossTab = function (config) {
 
   var ignoreNext = false
   var ignoreDate = 0
+  var counter = 0
 
   return function (store) {
     store.on('@dispatch', function (_, event) {
@@ -24,7 +25,7 @@ var crossTab = function (config) {
       if (config.filter && !config.filter(event[0], event[1])) return
 
       try {
-        ignoreDate = +new Date()
+        ignoreDate = Date.now() + counter++
         localStorage[key] = JSON.stringify([event[0], event[1], ignoreDate])
       } catch (e) {}
     })

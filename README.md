@@ -5,7 +5,7 @@
      
 Module for [Storeon] to synchronize actions for browser tabs with filtering of events that need to be synchronized. 
 
-It size is 205 bytes (minified and gzipped) and uses [Size Limit] to control size.
+It size is 218 bytes (minified and gzipped) and uses [Size Limit] to control size.
 
 [Storeon]: https://github.com/storeon/storeon
 [Size Limit]: https://github.com/ai/size-limit
