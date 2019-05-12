@@ -153,7 +153,7 @@ it('catch the event and sync event', function () {
     newValue: JSON.stringify([
       eventName,
       data,
-      Date.now()
+      Date.now() + '' + 0
     ])
   })
 
