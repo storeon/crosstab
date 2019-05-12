@@ -7,10 +7,10 @@
   "license": "MIT",
   "repository": "storeon/crosstab",
   "scripts": {
-    "clean": "rimraf api.md",
+    "clean": "rimraf api.md coverage/ dist/",
     "lint": "eslint *.js",
-    "spell": "yarn docs && yaspeller *.md",
-    "docs": "documentation build *.js -f md -o api.md",
+    "api": "documentation build *.js -f md -o api.md",
+    "spell": "yarn api && yaspeller *.md",
     "test": "jest --coverage && yarn lint && size-limit && yarn spell",
     "build:example": "parcel build example/index.html --no-cache --no-source-maps --public-url ."
   },
