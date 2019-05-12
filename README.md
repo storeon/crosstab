@@ -1,4 +1,4 @@
-# storeon/crosstab
+# Storeon Crosstab
 
 <img src="https://storeon.github.io/storeon/logo.svg" align="right"
      alt="Storeon logo by Anton Lovchikov" width="140">
@@ -9,9 +9,6 @@ It size is 218 bytes (minified and gzipped) and uses [Size Limit] to control siz
 
 [Storeon]: https://github.com/storeon/storeon
 [Size Limit]: https://github.com/ai/size-limit
-
-[![Build Status](https://travis-ci.org/storeon/crosstab.svg?branch=master)](https://travis-ci.org/storeon/crosstab)
-[![codecov](https://codecov.io/gh/storeon/crosstab/branch/master/graph/badge.svg)](https://codecov.io/gh/storeon/crosstab)
 
 
 ## Example
