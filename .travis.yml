@@ -8,7 +8,6 @@ branches:
 script:
   - yarn run test
   - yarn run build:example
-  - bash <(curl -s https://codecov.io/bash)
 deploy:
   provider: pages
   skip_cleanup: true
