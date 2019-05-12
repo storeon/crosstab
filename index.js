@@ -25,7 +25,7 @@ var crossTab = function (config) {
       if (config.filter && !config.filter(event[0], event[1])) return
 
       try {
-        ignoreDate = Date.now() + counter++
+        ignoreDate = Date.now() + '' + counter++
         localStorage[key] = JSON.stringify([event[0], event[1], ignoreDate])
       } catch (e) {}
     })
