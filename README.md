@@ -1,4 +1,4 @@
-# storeon-cross-tab
+# storeon/crosstab
 
 <img src="https://storeon.github.io/storeon/logo.svg" align="right"
      alt="Storeon logo by Anton Lovchikov" width="140">
@@ -10,8 +10,8 @@ It size is 218 bytes (minified and gzipped) and uses [Size Limit] to control siz
 [Storeon]: https://github.com/storeon/storeon
 [Size Limit]: https://github.com/ai/size-limit
 
-[![Build Status](https://travis-ci.org/isolovev/cross-tab.svg?branch=master)](https://travis-ci.org/isolovev/cross-tab)
-[![codecov](https://codecov.io/gh/isolovev/cross-tab/branch/master/graph/badge.svg)](https://codecov.io/gh/isolovev/cross-tab)
+[![Build Status](https://travis-ci.org/storeon/crosstab.svg?branch=master)](https://travis-ci.org/storeon/crosstab)
+[![codecov](https://codecov.io/gh/storeon/crosstab/branch/master/graph/badge.svg)](https://codecov.io/gh/storeon/crosstab)
 
 
 ## Example
@@ -21,20 +21,20 @@ It size is 218 bytes (minified and gzipped) and uses [Size Limit] to control siz
 ## Installation
 
 ```
-npm install isolovev/cross-tab
+npm install @storeon/crosstab
 # or 
-yarn add isolovev/cross-tab
+yarn add @storeon/crosstab
 ```
 
 
 ## Usage
 
-If you want sync state between tabs of the browser you should import the `crossTab` from `isolovev/cross-tab` and add this module to `createStore`.
+If you want sync state between tabs of the browser you should import the `crossTab` from `@storeon/crosstab` and add this module to `createStore`.
 
 ```js
 import createStore from 'storeon'
-import persistState from 'storeon/localstorage'
-import crossTab from 'cross-tab'
+import persistState from '@storeon/localstorage'
+import crossTab from '@storeon/crosstab'
 
 const increment = store => {
   store.on('@init', () => ({ count: 0, openMenu: false }))
@@ -57,8 +57,7 @@ store.on('@changed', (store) => {
 ## API
 
 ```js
-import createStore from 'storeon'
-import crossTab from 'cross-tab'
+import crossTab from '@storeon/crosstab'
 
 const moduleCrossTab = crossTab({
   filter: (event, data) => event !== 'dec',
@@ -75,7 +74,7 @@ Function `crossTab` could have options:
 ## Sponsor
 
 <p>
-  <a href="https://evrone.com/?utm_source=storeon-cross-tab">
+  <a href="https://evrone.com/?utm_source=storeon-crosstab">
     <img src="https://solovev.one/static/evrone-sponsored-300.png" 
       alt="Sponsored by Evrone" width="210">
   </a>
