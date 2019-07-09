@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.4.1
+* Add type definitions.
+
 ## 0.4.0
 * Rename GitHub repository.
 
