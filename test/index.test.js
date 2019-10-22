@@ -1,130 +1,130 @@
-var createStore = require('storeon')
+let createStore = require('storeon')
 
-var crossTab = require('../')
+let crossTab = require('../')
 
-var storageCallback = function () {}
+let storageCallback = function () {}
 
 jest.spyOn(window, 'addEventListener')
-  .mockImplementation(function (event, callback) {
+  .mockImplementation((event, callback) => {
     if (event === 'storage') {
       storageCallback = callback
     }
   })
 
 jest.spyOn(Date, 'now')
-  .mockImplementation(function () {
+  .mockImplementation(() => {
     return 1
   })
 
-beforeAll(function () {
+beforeAll(() => {
   localStorage.clear()
 })
 
-afterEach(function () {
+afterEach(() => {
   localStorage.clear()
   storageCallback = function () {}
 })
 
-var defaultStorageKey = 'storeon-crosstab'
+let defaultStorageKey = 'storeon-crosstab'
 
 function increment (store) {
-  store.on('@init', function () {
+  store.on('@init', () => {
     return { count: 0, trim: true }
   })
 
-  store.on('inc', function (state) {
+  store.on('inc', state => {
     return { count: state.count + 1 }
   })
 }
 
-it('saves dispatch actions', function () {
-  var eventName = 'int'
-  var data = { hello: 'world' }
-  var store = createStore([increment, crossTab()])
+it('saves dispatch actions', () => {
+  let eventName = 'inc'
+  let data = { hello: 'world' }
+  let store = createStore([increment, crossTab()])
 
   store.dispatch(eventName, data)
 
-  var persistedData = JSON.parse(localStorage[defaultStorageKey])
+  let persistedData = JSON.parse(localStorage[defaultStorageKey])
 
   expect(persistedData[0]).toBe(eventName)
   expect(persistedData[1]).toEqual(data)
 })
 
-it('other key for storage', function () {
-  var eventName = 'int'
-  var data = { otherKey: 'yeap' }
-  var key = 'other'
+it('other key for storage', () => {
+  let eventName = 'inc'
+  let data = { otherKey: 'yeap' }
+  let key = 'other'
 
-  var store = createStore([increment, crossTab({ key: key })])
+  let store = createStore([increment, crossTab({ key })])
 
   store.dispatch(eventName, data)
 
-  var persistedData = JSON.parse(localStorage[key])
+  let persistedData = JSON.parse(localStorage[key])
 
   expect(persistedData[0]).toBe(eventName)
   expect(persistedData[1]).toEqual(data)
   expect(localStorage[defaultStorageKey]).toBeUndefined()
 })
 
-it('filtering dispatch actions', function () {
-  var eventName = 'int'
-  var data = { testFilter: 'done?' }
-  var filter = function (event) {
+it('filtering dispatch actions', () => {
+  let eventName = 'inc'
+  let data = { testFilter: 'done?' }
+  let filter = function (event) {
     return event !== eventName
   }
 
-  var store = createStore([increment, crossTab({ filter: filter })])
+  let store = createStore([increment, crossTab({ filter })])
 
   store.dispatch(eventName, data)
 
   expect(localStorage[defaultStorageKey]).toBeUndefined()
 })
 
-it('filtering more dispatch actions', function () {
-  var eventName = 'int'
+it('filtering more dispatch actions', () => {
+  let eventName = 'inc'
 
-  var dataFirst = { first: 'test' }
-  var dataSecond = { test: 'two' }
-  var dataThird = { filterField: 'done?' }
+  let dataFirst = { first: 'test' }
+  let dataSecond = { test: 'two' }
+  let dataThird = { filterField: 'done?' }
 
-  var filter = function (event, data) {
-    return !data.hasOwnProperty('filterField')
+  let filter = function (event, data) {
+    return !Object.hasOwnProperty.call(data, 'filterField')
   }
 
-  var store = createStore([increment, crossTab({ filter: filter })])
+  let store = createStore([increment, crossTab({ filter })])
 
   store.dispatch(eventName, dataFirst)
   store.dispatch(eventName, dataSecond)
   store.dispatch(eventName, dataThird)
 
-  var persistedData = JSON.parse(localStorage[defaultStorageKey])
+  let persistedData = JSON.parse(localStorage[defaultStorageKey])
 
   expect(persistedData[0]).toBe(eventName)
   expect(persistedData[1]).toEqual(dataSecond)
 })
 
-it('catch the event', function () {
-  var eventName = 'int'
+it('catch the event', () => {
+  let eventName = 'inc'
 
-  var store = createStore([increment, crossTab()])
+  let store = createStore([increment, crossTab()])
 
   storageCallback({
     key: eventName,
     newValue: null
   })
 
-  var newState = store.get()
+  let newState = store.get()
   newState.count = newState.count + 1
 
   expect(store.get()).toEqual(newState)
 })
 
-it('catch the double event', function () {
-  var eventName = 'int'
-  var data = { hello: 'double' }
+it('catch the double event', () => {
+  let eventName = 'inc'
+  let data = { hello: 'double' }
 
-  var store = createStore([increment, crossTab()])
-  store.dispatch('int', data)
+  let store = createStore([increment, crossTab()])
+  store.dispatch('inc', data)
 
   storageCallback({
     key: defaultStorageKey,
@@ -135,18 +135,17 @@ it('catch the double event', function () {
     ])
   })
 
-  var newState = store.get()
-  newState.count = newState.count + 1
+  let newState = store.get()
 
-  expect(store.get()).toEqual(newState)
+  expect(newState.count).toEqual(2)
 })
 
-it('catch the event and sync event', function () {
-  var eventName = 'int'
-  var data = { hello: 'double' }
+it('catch the event and sync event', () => {
+  let eventName = 'inc'
+  let data = { hello: 'double' }
 
-  var store = createStore([increment, crossTab()])
-  store.dispatch('int', data)
+  let store = createStore([increment, crossTab()])
+  store.dispatch('inc', data)
 
   storageCallback({
     key: defaultStorageKey,
@@ -157,8 +156,7 @@ it('catch the event and sync event', function () {
     ])
   })
 
-  var newState = store.get()
-  newState.count = newState.count + 2
+  let newState = store.get()
 
-  expect(store.get()).toEqual(newState)
+  expect(newState.count).toEqual(1)
 })
