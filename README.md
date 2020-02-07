@@ -2,10 +2,10 @@
 
 <img src="https://storeon.github.io/storeon/logo.svg" align="right"
      alt="Storeon logo by Anton Lovchikov" width="140">
-     
-Module for [Storeon] to synchronize actions for browser tabs with filtering of events that need to be synchronized. 
 
-It size is 218 bytes (minified and gzipped) and uses [Size Limit] to control size.
+Module for [Storeon] to synchronize actions for browser tabs with filtering of events that need to be synchronized.
+
+It size is 223 bytes (minified and gzipped) and uses [Size Limit] to control size.
 
 [Storeon]: https://github.com/storeon/storeon
 [Size Limit]: https://github.com/ai/size-limit
@@ -19,7 +19,7 @@ It size is 218 bytes (minified and gzipped) and uses [Size Limit] to control siz
 
 ```
 npm install @storeon/crosstab
-# or 
+# or
 yarn add @storeon/crosstab
 ```
 
@@ -72,7 +72,7 @@ Function `crossTab` could have options:
 
 <p>
   <a href="https://evrone.com/?utm_source=storeon-crosstab">
-    <img src="https://solovev.one/static/evrone-sponsored-300.png" 
+    <img src="https://solovev.one/static/evrone-sponsored-300.png"
       alt="Sponsored by Evrone" width="210">
   </a>
 </p>
