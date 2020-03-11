@@ -15,6 +15,6 @@ declare namespace crossTab {
  */
 declare function crossTab<State = unknown>(
   config?: crossTab.Config
-): Storeon.Module<State>;
+): Storeon.StoreonModule<State>;
 
 export = crossTab;
