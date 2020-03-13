@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.0
+* Fix type definitions.
+* Move to named exports.
+* Reduce size.
+
 ## 0.4.1
 * Add type definitions.
 
