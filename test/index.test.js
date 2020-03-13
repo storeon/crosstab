@@ -1,6 +1,6 @@
-let createStore = require('storeon')
+let { createStoreon } = require('storeon')
 
-let crossTab = require('../')
+let { crossTab } = require('../')
 
 let storageCallback = function () {}
 
@@ -40,7 +40,7 @@ function increment (store) {
 it('saves dispatch actions', () => {
   let eventName = 'inc'
   let data = { hello: 'world' }
-  let store = createStore([increment, crossTab()])
+  let store = createStoreon([increment, crossTab()])
 
   store.dispatch(eventName, data)
 
@@ -55,7 +55,7 @@ it('other key for storage', () => {
   let data = { otherKey: 'yeap' }
   let key = 'other'
 
-  let store = createStore([increment, crossTab({ key })])
+  let store = createStoreon([increment, crossTab({ key })])
 
   store.dispatch(eventName, data)
 
@@ -73,7 +73,7 @@ it('filtering dispatch actions', () => {
     return event !== eventName
   }
 
-  let store = createStore([increment, crossTab({ filter })])
+  let store = createStoreon([increment, crossTab({ filter })])
 
   store.dispatch(eventName, data)
 
@@ -91,7 +91,7 @@ it('filtering more dispatch actions', () => {
     return !Object.hasOwnProperty.call(data, 'filterField')
   }
 
-  let store = createStore([increment, crossTab({ filter })])
+  let store = createStoreon([increment, crossTab({ filter })])
 
   store.dispatch(eventName, dataFirst)
   store.dispatch(eventName, dataSecond)
@@ -106,7 +106,7 @@ it('filtering more dispatch actions', () => {
 it('catch the event', () => {
   let eventName = 'inc'
 
-  let store = createStore([increment, crossTab()])
+  let store = createStoreon([increment, crossTab()])
 
   storageCallback({
     key: eventName,
@@ -123,7 +123,7 @@ it('catch the double event', () => {
   let eventName = 'inc'
   let data = { hello: 'double' }
 
-  let store = createStore([increment, crossTab()])
+  let store = createStoreon([increment, crossTab()])
   store.dispatch('inc', data)
 
   storageCallback({
@@ -144,7 +144,7 @@ it('catch the event and sync event', () => {
   let eventName = 'inc'
   let data = { hello: 'double' }
 
-  let store = createStore([increment, crossTab()])
+  let store = createStoreon([increment, crossTab()])
   store.dispatch('inc', data)
 
   storageCallback({

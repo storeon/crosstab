@@ -5,7 +5,7 @@
 
 Module for [Storeon] to synchronize actions for browser tabs with filtering of events that need to be synchronized.
 
-It size is 223 bytes (minified and gzipped) and uses [Size Limit] to control size.
+It size is 217 bytes (minified and gzipped) and uses [Size Limit] to control size.
 
 [Storeon]: https://github.com/storeon/storeon
 [Size Limit]: https://github.com/ai/size-limit
@@ -29,9 +29,9 @@ yarn add @storeon/crosstab
 If you want sync state between tabs of the browser you should import the `crossTab` from `@storeon/crosstab` and add this module to `createStore`.
 
 ```js
-import createStore from 'storeon'
+import { createStoreon } from 'storeon'
 import persistState from '@storeon/localstorage'
-import crossTab from '@storeon/crosstab'
+import { crossTab } from '@storeon/crosstab'
 
 const increment = store => {
   store.on('@init', () => ({ count: 0, openMenu: false }))
@@ -39,7 +39,7 @@ const increment = store => {
   store.on('toggleMenu', ({ openMenu }) => ({ openMenu: !openMenu }))
 }
 
-const store = createStore([
+const store = createStoreon([
   increment,
   persistState(),
   crossTab({ filter: (event, data) => event !== 'toggleMenu' })

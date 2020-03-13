@@ -15,36 +15,40 @@
     "build:example": "parcel build example/index.html --no-cache --no-source-maps --public-url ."
   },
   "devDependencies": {
-    "@logux/eslint-config": "^35.0.4",
-    "@size-limit/preset-small-lib": "^4.0.1",
-    "@storeon/localstorage": "^0.10.0",
+    "@logux/eslint-config": "^36.1.1",
+    "@size-limit/dual-publish": "^4.3.1",
+    "@size-limit/preset-small-lib": "^4.3.1",
+    "@storeon/localstorage": "^0.13.1",
     "autoprefixer": "^9.7.4",
+    "check-dts": "^0.1.2",
     "documentation": "^12.1.4",
+    "dual-publish": "^0.5.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-import-helpers": "^1.0.2",
-    "eslint-plugin-jest": "^23.6.0",
+    "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^16.0.0",
-    "husky": "^4.2.1",
+    "eslint-plugin-unicorn": "^17.2.0",
+    "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "lint-staged": "^10.0.7",
+    "lint-staged": "^10.0.8",
     "parcel-bundler": "^1.12.4",
-    "rimraf": "^3.0.1",
-    "size-limit": "^4.0.1",
-    "storeon": "^0.9.8",
+    "rimraf": "^3.0.2",
+    "size-limit": "^4.3.1",
+    "storeon": "^2.0.1",
     "yaspeller": "^6.0.2"
   },
   "size-limit": [
     {
-      "path": "index.js",
-      "limit": "223 B"
+      "name": "core",
+      "import": {
+        "index.js": "{ crossTab }"
+      },
+      "limit": "217 B"
     }
   ],
   "lint-staged": {
@@ -68,11 +72,10 @@
     ]
   },
   "eslintConfig": {
-    "extends": "@logux/eslint-config/browser",
+    "extends": "@logux/eslint-config",
     "rules": {
       "node/no-unpublished-require": "off",
-      "es5/no-es6-static-methods": "off",
-      "node/no-missing-require": "off",
+      "unicorn/better-regex": "off",
       "func-style": "off"
     }
   },

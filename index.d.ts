@@ -1,6 +1,6 @@
-import Storeon = require("storeon");
+import { StoreonModule } from 'storeon';
 
-declare namespace crossTab {
+export declare namespace crossTab {
   interface Config {
     key?: string;
     filter?: (event: PropertyKey, data?: any) => boolean
@@ -13,8 +13,6 @@ declare namespace crossTab {
  * @param {String} [config.key = 'storeon-crosstab'] Key to use in localstorage
  * @param {Filter} [config.filter] Callback to filter events.
  */
-declare function crossTab<State = unknown>(
+export declare function crossTab<State = unknown>(
   config?: crossTab.Config
-): Storeon.Module<State>;
-
-export = crossTab;
+): StoreonModule<State>;
