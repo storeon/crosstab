@@ -4,39 +4,39 @@
  * @param {String} [config.key = 'storeon-crosstab'] The default key
  * @param {Filter} [config.filter] Pass callback to filter events.
  */
-var crossTab = function (config) {
+let crossTab = function (config) {
   config = config || {}
 
-  var key = config.key || 'storeon-crosstab'
+  let key = config.key || 'storeon-crosstab'
 
-  var ignoreNext = false
-  var ignoreDate = 0
-  var counter = 0
+  let ignoreNext = false
+  let ignoreDate = 0
+  let counter = 0
 
   return function (store) {
-    store.on('@dispatch', function (_, event) {
-      if (event[0][0] === '@') return
+    store.on('@dispatch', (_, [eventName, data]) => {
+      if (eventName[0] === '@') return
 
       if (ignoreNext) {
         ignoreNext = false
         return
       }
 
-      if (config.filter && !config.filter(event[0], event[1])) return
+      if (config.filter && !config.filter(eventName, data)) return
 
       try {
         ignoreDate = Date.now() + '' + counter++
-        localStorage[key] = JSON.stringify([event[0], event[1], ignoreDate])
+        localStorage[key] = JSON.stringify([eventName, data, ignoreDate])
       } catch (e) {}
     })
 
-    window.addEventListener('storage', function (event) {
+    window.addEventListener('storage', event => {
       if (event.key === key) {
-        var tip = JSON.parse(event.newValue)
+        let [eventName, data, ignoreDateFromEvent] = JSON.parse(event.newValue)
 
-        if (ignoreDate !== tip[2]) {
+        if (ignoreDate !== ignoreDateFromEvent) {
           ignoreNext = true
-          store.dispatch(tip[0], tip[1])
+          store.dispatch(eventName, data)
         }
       }
     })
@@ -50,4 +50,4 @@ var crossTab = function (config) {
  * @param {*} Event data
  */
 
-module.exports = crossTab
+module.exports = { crossTab }
