@@ -1,6 +1,6 @@
 {
   "name": "@storeon/crosstab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Module for storeon to sync state at different tabs of the browser",
   "main": "./index.js",
   "types": "./index.d.ts",
