@@ -44,7 +44,7 @@
       "import": {
         "index.js": "{ crossTab }"
       },
-      "limit": "217 B"
+      "limit": "214 B"
     }
   ],
   "lint-staged": {
