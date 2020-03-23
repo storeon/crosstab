@@ -1,12 +1,4 @@
-/**
- * Storeon module to sync state at different tabs of the browser
- * @param {Object} config The config object
- * @param {String} [config.key = 'storeon-crosstab'] The default key
- * @param {Filter} [config.filter] Pass callback to filter events.
- */
-let crossTab = function (config) {
-  config = config || {}
-
+function crossTab (config = {}) {
   let key = config.key || 'storeon-crosstab'
 
   let ignoreNext = false
@@ -46,12 +38,5 @@ let crossTab = function (config) {
     })
   }
 }
-
-/**
- * Filter for sync event
- * @callback Filter
- * @param {String} Event name
- * @param {*} Event data
- */
 
 module.exports = { crossTab }
