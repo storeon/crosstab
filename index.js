@@ -15,14 +15,18 @@ let crossTab = function (config) {
 
   return function (store) {
     store.on('@dispatch', (_, [eventName, data]) => {
-      if (eventName[0] === '@') return
+      if (eventName[0] === '@') {
+        return
+      }
 
       if (ignoreNext) {
         ignoreNext = false
         return
       }
 
-      if (config.filter && !config.filter(eventName, data)) return
+      if (config.filter && !config.filter(eventName, data)) {
+        return
+      }
 
       try {
         ignoreDate = Date.now() + '' + counter++
