@@ -30,7 +30,7 @@ If you want sync state between tabs of the browser you should import the `crossT
 
 ```js
 import { createStoreon } from 'storeon'
-import persistState from '@storeon/localstorage'
+import { persistState } from '@storeon/localstorage'
 import { crossTab } from '@storeon/crosstab'
 
 const increment = store => {
