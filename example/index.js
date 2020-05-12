@@ -1,7 +1,7 @@
-var createStore = require('storeon')
-var persistState = require('@storeon/localstorage')
+var createStoreon = require('storeon').createStoreon
+var persistState = require('@storeon/localstorage').persistState
 
-var crossTab = require('../')
+var crossTab = require('../').crossTab
 
 // Initial state, reducers and business logic are packed in independent modules
 function increment (store) {
@@ -28,7 +28,7 @@ function filter (event) {
 }
 
 // Create store
-var store = createStore([
+var store = createStoreon([
   increment,
   persistState(),
   crossTab({ filter: filter })
