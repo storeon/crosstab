@@ -67,6 +67,18 @@ Function `crossTab` could have options:
 * __key__: key for sync data in local storage.
 * __filter__: callback function to filter actions to be synchronized. Should return `true` if need sync this action. Takes parameters of an event name and a data that is sent.
 
+## Server-side rendering
+
+`@storeon/crosstab` is not compatible with server-side rendering since it require `window` to operate. You can exclude it during server-side render process.
+
+```js
+const store = createStoreon([
+  increment,
+  ...typeof window !== 'undefined' ? [
+    crossTab({ filter: (event, data) => event !== 'toggleMenu' })
+  ] : []
+])
+```
 
 ## Sponsor
 
