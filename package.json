@@ -8,9 +8,10 @@
   "license": "MIT",
   "repository": "storeon/crosstab",
   "scripts": {
+    "check": "yarn run test && yarn run lint && size-limit && yarn run spell",
     "lint": "eslint *.js",
     "spell": "yaspeller *.md",
-    "test": "jest --coverage && yarn lint && size-limit && yarn spell",
+    "test": "jest --coverage",
     "build:example": "parcel build example/index.html --no-cache --no-source-maps --public-url ."
   },
   "devDependencies": {
