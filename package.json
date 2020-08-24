@@ -15,28 +15,29 @@
     "build:example": "parcel build example/index.html --no-cache --no-source-maps --public-url ."
   },
   "devDependencies": {
-    "@logux/eslint-config": "^36.1.1",
-    "@size-limit/dual-publish": "^4.4.1",
-    "@size-limit/preset-small-lib": "^4.4.1",
-    "@storeon/localstorage": "^0.14.0",
-    "autoprefixer": "^9.7.4",
-    "check-dts": "^0.1.4",
-    "dual-publish": "^0.8.4",
-    "eslint": "^6.8.0",
+    "@logux/eslint-config": "^40.0.3",
+    "@size-limit/dual-publish": "^4.5.7",
+    "@size-limit/preset-small-lib": "^4.5.7",
+    "@storeon/localstorage": "^1.2.0",
+    "autoprefixer": "^9.8.6",
+    "check-dts": "^0.3.3",
+    "dual-publish": "^0.11.0",
+    "eslint": "^7.7.0",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.8.2",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-prefer-let": "^1.0.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prefer-let": "^1.0.2",
+    "eslint-plugin-prettierx": "^0.14.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^17.2.0",
-    "jest": "^25.1.0",
+    "eslint-plugin-unicorn": "^21.0.0",
+    "jest": "^26.4.2",
     "parcel-bundler": "^1.12.4",
-    "size-limit": "^4.4.1",
-    "storeon": "^2.0.1",
-    "yaspeller": "^6.0.3"
+    "size-limit": "^4.5.7",
+    "storeon": "^3.0.3",
+    "yaspeller": "^7.0.0"
   },
   "size-limit": [
     {
@@ -63,6 +64,7 @@
     "rules": {
       "node/no-unpublished-require": "off",
       "unicorn/better-regex": "off",
+      "unicorn/prefer-optional-catch-binding": "off",
       "func-style": "off"
     }
   },
