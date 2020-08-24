@@ -29,11 +29,9 @@ function crossTab (config = {}) {
     if (typeof window !== 'undefined') {
       window.addEventListener('storage', event => {
         if (event.key === key) {
-          let [
-            eventName,
-            data,
-            ignoreDateFromEvent
-          ] = JSON.parse(event.newValue)
+          let [eventName, data, ignoreDateFromEvent] = JSON.parse(
+            event.newValue
+          )
 
           if (ignoreDate !== ignoreDateFromEvent) {
             ignoreNext = true
