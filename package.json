@@ -19,7 +19,6 @@
     "@size-limit/dual-publish": "^4.6.0",
     "@size-limit/preset-small-lib": "^4.6.0",
     "@storeon/localstorage": "^1.2.0",
-    "autoprefixer": "^10.0.0",
     "check-dts": "^0.3.3",
     "dual-publish": "^0.11.0",
     "eslint": "^7.9.0",
@@ -66,12 +65,6 @@
       "unicorn/better-regex": "off",
       "unicorn/prefer-optional-catch-binding": "off",
       "func-style": "off"
-    }
-  },
-  "postcss": {
-    "map": false,
-    "plugins": {
-      "autoprefixer": {}
     }
   },
   "browserslist": [
